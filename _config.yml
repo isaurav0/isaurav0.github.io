@@ -17,7 +17,7 @@ baseurl: ""
 title: saurabpathak.com.np
 
 # Short description of your site
-#description: awesome
+description: blog
 
 # --- Navigation bar options --- #
 
@@ -256,5 +256,3 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
-# Beautiful Jekyll / Dean Attali
-# 2fc73a3a967e97599c9763d05e564189
