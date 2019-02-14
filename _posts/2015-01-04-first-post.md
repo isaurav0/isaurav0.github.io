@@ -1,7 +1,12 @@
 ---
 layout: post
-title: First post!
-image: "/img/hello_world.jpeg"
+title: Rickternet
+subtitle: Wubba lubba dub dub
+image: /img/rick.png
+bigimg: /img/ricknmorty.jpg
+tags: [ricknmorty]
 
 ---
-Finally, got my website serving on internet. :D Yay !
+
+
+Looks like we are inside the internet Morty. Its literally the best place to hangout in the entire multiverse. We'll hang out here until I fix my portal gun, Morty. Till then, get schwifty motherfuckerrrrr ! 
