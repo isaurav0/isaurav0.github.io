@@ -6,7 +6,6 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 canvas.position = "absolute";
 
-
 //background image
 var image = new Image();
 image.src = "../img/black.png";
@@ -17,8 +16,6 @@ const width = 160;
 const gap = 8;
 var gameOver = false;
 var start = true
-
-
 
 //box properties
 var box1={
@@ -159,7 +156,6 @@ image.onload = function(){
     });
 }
 
-
 //turn
 function turn(team){
     if(team){
@@ -178,8 +174,6 @@ function turn(team){
     }
 }
 
-
-
 //if game over
 window.onclick=function(){
     if(gameOver){
@@ -187,7 +181,6 @@ window.onclick=function(){
         location.reload();
     }
 }
-
 
 function check(box, team){
     ctx.font = "100px Arial";
