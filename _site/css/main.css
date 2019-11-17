@@ -16,7 +16,7 @@ p {
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 800;
+  /* font-weight: 800; */
 }
 a {
   color: #008AFF;
@@ -115,8 +115,13 @@ img {
 
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 18px;
   color: #404040;
+}
+
+.nav.navbar-nav.navbar-right{
+  padding-right: 2em;
 }
 
 .navbar-custom .navbar-brand:hover,
@@ -124,6 +129,11 @@ img {
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
   color: #0085A1;
+}
+
+.navbar-brand{
+  padding-left: 5em;
+  font-size: 20px;
 }
 
 .navbar-custom .navbar-brand-logo {
