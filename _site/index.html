@@ -11,10 +11,8 @@
   <meta name="author" content="Saurav Pathak" />
 
   
-  <meta name="description" content="I post here anything I can possibly think of.">
-  
 
-  <link rel="alternate" type="application/rss+xml" title="saurabpathak.com.np - blog" href="/feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Saurav's Blog - blog" href="/feed.xml" />
 
   
 
@@ -64,7 +62,7 @@
   
 
    
-  <meta property="og:description" content="I post here anything I can possibly think of.">
+  <meta property="og:description" content="{% for post in paginator.posts %} {{ post.title }} {% if post.subtitle %} {{ post.subtitle }} {% endif %} Posted on {{ post.date | date: &quot;%B %-d, %Y&quot; }} {% if post.image %} {% endif %} {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }} {% assign excerpt_word_count =...">
   
 
 
@@ -75,8 +73,6 @@
   <link rel="canonical" href="http://localhost:4000/" />
   
 
-  
-  <meta property="og:image" content="http://localhost:4000/img/profile.jpg" />
   
 
 
@@ -90,11 +86,9 @@
   
 
   
-  <meta name="twitter:description" content="I post here anything I can possibly think of.">
+  <meta name="twitter:description" content="{% for post in paginator.posts %} {{ post.title }} {% if post.subtitle %} {{ post.subtitle }} {% endif %} Posted on {{ post.date | date: &quot;%B %-d, %Y&quot; }} {% if post.image %} {% endif %} {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }} {% assign excerpt_word_count =...">
   
 
-  
-  <meta name="twitter:image" content="http://localhost:4000/img/profile.jpg" />
   
 
   
@@ -119,7 +113,7 @@
         <span class="icon-bar"></span>
       </button>
       
-        <a class="navbar-brand" href="http://localhost:4000">saurabpathak.com.np</a>
+        <a class="navbar-brand" href="http://localhost:4000">Saurav's Blog</a>
       
     </div>
 
@@ -172,14 +166,6 @@
     </div>
 
 	
-	<div class="avatar-container">
-	  <div class="avatar-img-border">
-	    <a href="http://localhost:4000">
-	      <img class="avatar-img" src="/img/profile.jpg" />
-		</a>
-	  </div>
-	</div>
-	
 
   </div>
 </nav>
@@ -188,33 +174,7 @@
     <!-- TODO this file has become a mess, refactor it -->
 
 
-
-
-
-<header class="header-section ">
-
-<div class="intro-header no-img">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="page-heading">
-          <h1>Saurav's Blog</h1>
-		  
-		    
-            <hr class="small">
-            <span class="page-subheading">I post here anything I can possibly think of.</span>
-			
-		  
-		  
-		  
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</header>
-
-
+<div class="intro-header"></div>
 
 
 
@@ -239,12 +199,6 @@
     </p>
 
     <div class="post-entry-container">
-      
-      <div class="post-image">
-        <a href="/2019-02-15-cool-linux-commands/">
-          <img src="/img/linuxlogo.png">
-        </a>
-      </div>
       
       <div class="post-entry">
         The commands I list here might not be quite useful but they are fun :p Check these out when you’re bored. Some commands here wont be installed already but are available on repositories. In that instance, install them with your package manager.
@@ -300,50 +254,6 @@
       </div>
     </div>
 
-    
-
-   </article>
-  
-  <article class="post-preview">
-    <a href="/2019-02-12-first-post/">
-	  <h2 class="post-title">Rickternet</h2>
-
-	  
-	  <h3 class="post-subtitle">
-	    Wubba lubba dub dub
-	  </h3>
-	  
-    </a>
-
-    <p class="post-meta">
-      Posted on February 12, 2019
-    </p>
-
-    <div class="post-entry-container">
-      
-      <div class="post-image">
-        <a href="/2019-02-12-first-post/">
-          <img src="/img/rick.png">
-        </a>
-      </div>
-      
-      <div class="post-entry">
-        Looks like we are inside the internet, Morty. The best universe in the entire multiverse, Morty! We’ll hang out here until I fix my portal gun. Till then, get schwifty bitch !
-
-        
-        
-      </div>
-    </div>
-
-    
-    <div class="blog-tags">
-      Tags:
-      
-      
-      <a href="/tags#ricknmorty">ricknmorty</a>
-      
-      
-    </div>
     
 
    </article>

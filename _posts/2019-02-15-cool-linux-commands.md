@@ -2,7 +2,7 @@
 layout: post
 title: Cool commands for linux terminal
 subtitle: Here is a short list of some of my favorite linux terminal commands.  
-image: /img/linuxlogo.png
+# image: /img/linuxlogo.png
 tags: [linux, tutorial]
 date: 2019-02-15 
 ---
