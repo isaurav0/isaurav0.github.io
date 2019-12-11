@@ -18,7 +18,7 @@ DNS server works somehow the same way as phonebook app in our phone. By simplyin
 we can make a call to people we want. DNS server contains ip address and domain name of servers. For example: when we enter www.facebook.com in our browser,
 according to the nameserver provided to us, generally by our ISP, it is translated to corresponding ip address and connection is made. 
 
-In *nix systems, nameserver is stored in a configuration file called resolv.conf. If you want query which nameserver is currently being used by your device, navigate to the
+In *nix systems, nameserver is stored in a configuration file called resolv.conf. If you want to query which nameserver is currently being used by your device, navigate to the
 file /etc/resolv.conf. You can do this by typing following command. 
 
 
@@ -37,11 +37,11 @@ with no restrictions as made by your ISP, **change your nameserver ip-address to
 Cloudfare. 
 
 
-To do this, open /etc/resolv.conf file with your favorite text editor, delete or comment the line which contains previous nameserver. 
-Change ip address of nameserver to 1.1.1.1. 
+To do this, open /etc/resolv.conf file with your favorite text editor, delete or comment the line which contains previous nameserver. And add 
+a line as below. 
 
 ```bash
 	nameserver 1.1.1.1
 ```
 
-There you go, with a faster internet and with no restrictions as made by Nepal government. 
+There you go, with a faster internet and with no restrictions as made by government of Nepal. 
