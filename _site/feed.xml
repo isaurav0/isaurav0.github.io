@@ -7,14 +7,25 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>A better internet because of DNS</title>
+        <description>
+          
+          DNS stands for Domain Name System, which is basically a method of assigning cute nicknames to ugly IP addresses. Every devices on network has their IP addresses. I dont want to talk about IP addresses in detail in this blog, however IP addresses distinguish devices on the network. Suppose we...
+        </description>
+        <pubDate>Fri, 15 Feb 2019 00:00:00 -0800</pubDate>
+        <link>http://localhost:4000/2019-02-15-dns-made-internet-pretty/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-02-15-dns-made-internet-pretty/</guid>
+      </item>
+    
+      <item>
         <title>Cool commands for linux terminal</title>
         <description>
           Here is a short list of some of my favorite linux terminal commands. - 
           The commands I list here might not be quite useful but they are fun :p Check these out when you’re bored. Some commands here wont be installed already but are available on repositories. In that instance, install them with your package manager. Weather Did you know you can check weather...
         </description>
         <pubDate>Fri, 15 Feb 2019 00:00:00 -0800</pubDate>
-        <link>http://localhost:4000/2019-02-15-cool-linux-commands/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019-02-15-cool-linux-commands/</guid>
+        <link>http://localhost:4000/2019-02-15-cool-linux-commands-copy/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019-02-15-cool-linux-commands-copy/</guid>
       </item>
     
       <item>
