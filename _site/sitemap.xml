@@ -25,7 +25,15 @@
 <loc>http://localhost:4000/tags/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/projects/flappy/game.html</loc>
+<lastmod>2020-02-27T04:35:20-08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/projects/flappy/greet.html</loc>
+<lastmod>2020-02-27T03:34:58-08:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/projects/tictac.html</loc>
-<lastmod>2019-12-10T21:21:12-08:00</lastmod>
+<lastmod>2020-02-27T04:39:13-08:00</lastmod>
 </url>
 </urlset>

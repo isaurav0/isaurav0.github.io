@@ -2,14 +2,40 @@
 layout: page
 ---
 <style>
-    .projects{
+
+    .project{
+        display: grid;
+    }
+
+    .child{
+        grid-row: 2;
+    }
+
+    .images{
         border:5px;
         height: 250px;
         width: 200px;
         margin: 10px;
     }
+    
 </style>
-<a href="./tictac.html">
-<img class='projects' src='/img/tictac.png'>
-<h3>TicTacToe Game</h3>
-</a>
+
+<div class="parent project">
+
+    <div class="child project">
+        <a href="./tictac.html">
+            <img class='images' src='/img/tictac.png'>
+            <h3>TicTacToe Game</h3>
+        </a>
+    </div>
+
+    <div class="child project">
+        <a href="./flappy/greet.html">
+            <img class='images' src='/img/angry.png'>
+            <h3>Angry Flappy</h3>
+        </a>
+    </div>
+
+
+
+</div>
