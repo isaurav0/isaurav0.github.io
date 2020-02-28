@@ -8,9 +8,9 @@ window.addEventListener('resize', e=>{
 
 function Bird(size){
     this.size = size;
-    this.x = 10
-    // this.y = HEIGHT/2
-    this.y = 0
+    this.x = 30
+    this.y = HEIGHT/2-200
+    // this.y = 0
     this.drawBird = function(){
         // ctx.fillStyle = "red";
         // ctx.fillRect(this.x,this.y, size, size);
@@ -26,7 +26,6 @@ function Bird(size){
         this.clearCanvas()
         if(clicked && this.y>0){
             readyToFly = false
-            // factor = 15 + GRAVITY
             this.y = this.y - 80;
             const wingAudio = document.getElementById("wing");
             wingAudio.play();
@@ -34,7 +33,6 @@ function Bird(size){
         }
         else if(this.y<HEIGHT-15){
             this.y = this.y + GRAVITY ;
-            // this.clearCanvas()
         }
         else{
 
@@ -50,20 +48,18 @@ function Bird(size){
 }
 
 
-function Wall(height, gap, x){
+function Wall(height, gap, x, config){
     this.height = height
     this.gap = gap
     this.x = x 
-    // this.size = 35
     this.size = 160
     this.speed = 0
+    this.config = config
 
     this.update = function(isActive){
             this.speed = Math.floor(score%25/5);
-            // this.speed = 2
             this.x -=(2 + this.speed)*5
 
-            
         if(isActive)
             ctx.fillStyle = "orange";
         else
@@ -143,9 +139,9 @@ function random(min, max){
 
 
 function lastWall(walls){
-    last = 0
+    last = new Wall(0,0,0,'test wall')
     for(i=0;i<walls.length;i++){
-        if(walls[i].x > last){
+        if(walls[i].x > last.x){
             last = walls[i]
         }
     }
@@ -156,6 +152,8 @@ function lastWall(walls){
 function runningState(){
     //bird.update(clicked, GRAVITY)  GRAVITY is for accelerating in freefall
     bird.update(false, GRAVITY)
+    // speed = Math.floor(score%25/5);
+
     //update score
     if(isWallActive(bird, walls[0]))
         scoreUpdate = true
@@ -180,51 +178,64 @@ function runningState(){
         }
     }
     
-    //implement queue for walls
+    // implement queue for walls
     if(walls[0].x < - walls[0].size - 10){
-        console.log(walls[0])
+
+        speed = Math.floor(score%25/5);
+        wallHeight = random(100, 400)
+        lastHeight = walls[walls.length-1].height
         
-        
-        if( walls[0].speed = 4 ){ //0 speed config
-            console.log("0 speed config added")
+        if( speed == 4 ){ //0 speed config
             // wall = new Wall(random(100,400), random(200,400), walls[walls.length-1].x+random(400,600))
-            wall = new Wall(random(100,300), random(200,300), walls[walls.length-1].x+random(400,600))
-            walls.push(wall)
+            wall = new Wall(random(100,300), random(200,300), walls[walls.length-1].x+random(400,600), "config 0 speed")
+            // walls.push(wall)
         }
         
-        if(walls[0].speed = 0){ //1 speed config
-            console.log("speed 1 config added")
-            wallHeight = random(100, 400)
-            wall = new Wall(wallHeight, random(200,400), walls[walls.length-1].x+random(600,700))
+        if(speed == 0){ //1 speed config completed
+            if(wallHeight - lastHeight>=250)
+                wall = new Wall(wallHeight, random(200,300), lastWall(walls).x+random(650,700), "config 1 wall")
+            else
+                wall = new Wall(wallHeight, random(200,300), lastWall(walls).x+random(600,700), "config 1 wall")
         }
 
-        if(walls[0].speed = 1){ //2 speed config
-            console.log("speed 2 config added")
+        if(speed == 1){ //2 speed config completed
             wallHeight = random(100, 300)
-            if(wallHeight - walls[walls.length-1].height>=300)
-                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+random(900,1000))
+            if(wallHeight - lastHeight>=250)
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+900, "config 2 speed")
             else 
-                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+random(700,800))
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+random(700,800), "config 2 speed")
         } 
 
+        if(speed == 2){ //3 speed config remaining to be tuned
+            wallHeight = random(100,200)
+            if(wallHeight - lastHeight>=300)
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+1200, "config 3")
+            else 
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+random(500,1200), "config 3")
+        }
 
+        if(speed == 3){ // 4 speed config
+            wallHeight = random(100, 300)
+            if(wallHeight - lastHeight>=100)
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+1300, "config 4 speed")
+            else 
+                wall = new Wall(wallHeight, random(200,350), walls[walls.length-1].x+random(700,800), "config 4 speed")
+        }
 
+        walls.push(wall)
         walls = walls.slice(1, )
-            // walls[i]
-        // if(wallHeight)
-        // if(Math.abs(lastWall(walls).height-wallHeight)>100)
-            // wall = new Wall(wallHeight, random(200,250), walls[walls.length-1].x+random(400,600))
-        
+    }
+
+    for(i=0;i<walls.length;i++){
+        if(score==prevHighscore && i==0){
+            walls[0].update(true)
+        }
+        else{
+            walls[i].update(false)
+        }
+            
     }
         
-    for(i=0;i<walls.length;i++){
-        if(isWallActive(bird, walls[i]))
-            walls[i].update(true)
-        else
-            walls[i].update(false)
-    }    
-    
-
     if(gameOver(bird, walls[0])){
         const gameOverMusic = document.getElementById("gameOver");
         gameOverMusic.play()
@@ -236,6 +247,7 @@ function runningState(){
         setTimeout(function() { startonclick= true }, 500);
         return
     }
+
 
     GRAVITY+=0.2;
     window.requestAnimationFrame(runningState);
@@ -249,8 +261,11 @@ function gameSetup(){
     ctx = canvas.getContext('2d');        
 
     player = new Image();
-    // player.src = "./images/charo.png";
     player.src = "./images/risako_charo.svg";
+    // player.src = "./images/muji.png";
+    // player.src = "./images/kale.png";
+    // player.src = "./images/suste.png";
+    // player.src = "./images/chutiya.png";
 
     score = 0;
     gameStop = false;
@@ -261,26 +276,14 @@ function gameSetup(){
     walls = [];
     scoreUpdate = false
     startonclick = false
-    walls[0] = new Wall(random(100,400), random(190,250), WIDTH) //for begining
-    // walls[0] = new Wall(100,  200, WIDTH) //for speed 2 test
+    prevHighscore = window.localStorage.getItem('score')
+    walls[0] = new Wall(random(100,400), random(190,250), WIDTH, "config 0 ") //for begining
     readyToFly = true
     for(i=1;i<5;i++){
-        walls[i] = new Wall(random(100,400), 190, walls[i-1].x+random(600,700)) //final
-        // walls[i] = new Wall(random(100,400), 190, walls[i-1].x+random(800,900)) //for speed 2 test
+        walls[i] = new Wall(random(100,400), random(190,250), walls[i-1].x+random(600,700), "config 0 ") //final
+      
     } 
-    
-    // walls[2] = new Wall(100, 190, walls[i-1].x+500)
     var request = window.requestAnimationFrame(runningState);
 }
-
-//if speed = 0
-    // height = random(100,400)
-    // distance = random(450,)
-
-    // 100-400 = 500
-
-//if speed = 1
-    // height = random(100,400)
-
 
 gameSetup();
