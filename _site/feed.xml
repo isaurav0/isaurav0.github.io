@@ -7,6 +7,17 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>Keep servers running in background</title>
+        <description>
+          
+          A wise man once said, “To access your server anytime, you gotta keep it running all the time.”. No wonder, he was wise. I’m going to write about two methods I use to keep my application servers active in the background. Using screen command I find screen command super useful....
+        </description>
+        <pubDate>Sat, 11 Apr 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2020-04-11-Keep-servers-running-in-background/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-04-11-Keep-servers-running-in-background/</guid>
+      </item>
+    
+      <item>
         <title>A better internet because of DNS</title>
         <description>
           
