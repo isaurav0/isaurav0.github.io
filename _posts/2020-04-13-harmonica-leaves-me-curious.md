@@ -1,12 +1,13 @@
 ---
 layout: post
-title: 'I have started playing harmonica.'
+title: 'Mouth harmonica is breath taking, literally'
 # subtitle: ''
-date: 2020-04-14 02:39:56 +0000
-
+date: 2020-04-13
+tags: [slice of life, music]
+bigimg: /img/sound.jpg
 ---
 
-I have been singing since I can remember. Though I am a mediocre singer with no special abilities, my love for music has only grown with time. I taught myself to play harmonium when I was 12 years old. It was an instant love with the instrument. Over these most recent years, I learnt a bit of guitar, piano and ukulele. I’m no magician in any of these instruments either. You could call me Jack of all trades and master of none.
+I have been singing since I can remember. Though I am a mediocre singer, my love for music has only grown with time. I taught myself to play harmonium when I was 12 years old. It was an instant love with the instrument. Over these most recent years, I learnt guitar, piano and ukulele. I’m no magician in any of these instruments either. You could call me a Jack of all trades and master of none.
 
 Some days before, I borrowed a harmonica from my cousin. The sound she produces is vibrant and breath taking. I mean breath taking literally here. On happy afternoons, my heart rejoices with joy while playing her. And It feels like I can almost see music, like a painting. Notes you produce in each blow being colorful shades of green and blue. And notes produced on each draw feels yellow. When you play the combinations of blows and draws carefully with your lips enclosed, eyes closed and heart opened, you see it. You see yourself chilling out in green hills of Switzerland with white Himalayas on the background. Like in any 90’s movie of Shah Rukh Khan. You are ready for love. You would have danced like they do in Bollywood, if only it was a bit less embarrassing. 
 
@@ -16,5 +17,5 @@ However, playing harmonica does not feel same in lonely nights. Bright and color
 
 You let night grow and let things in life pan out without resistance. Before shutting yourself down, you play last melody of the day for peace.
 
-फुलको आँखामा फुलै सन्सार ।
-काडाको आँखामा काँडै सन्सार ।।
+फुलको आँखामा फुलै सन्सार ।  
+काँडाको आँखामा काँडै सन्सार ।।
