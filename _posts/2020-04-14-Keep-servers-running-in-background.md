@@ -130,6 +130,41 @@ have them doing good work for us in background. I'm going to write about two met
     $ systemctl stop myserver
     ```
 
-    **Logging**
+    **Setting up logging server**  
 
-Personally, I always prefer systemd over screen in case of setting up servers because services can be relied upon. 
+    Logging is a vital mechanism to keep track of how your server is doing. A good log helps not only in analyzation of traffic but also in troubleshooting and
+    debugging. So setting up a central logserver is never a bad idea. I'm going to write about setting up logging server
+    with `rsyslog` which manages syslogs in ubuntu systems by default. 
+
+    Create a new file in /etc/rsyslog.d 
+    ```
+        $ sudo touch /etc/rsyslog.d/filename.conf
+    ```
+
+    Now we tell the file to save logs of our server using `SyslogIdentifier`. In our case it is `myserveridentifier`. So write the following code inside `/etc/rsyslog.d/filename.conf`.
+    ```
+        if $programname == 'myserveridentifier' then /var/log/syslog
+        & stop
+    ```
+
+    After writing appropriate configurations successfully, restart rsyslog service.
+    ```
+        $ sudo systemctl restart rsyslog
+    ```
+
+    To view the logs,
+    ```
+        $ sudo journalctl -u <your program identifier>
+    ```
+
+    You can save logs in a external file too. Create a file mylogfile.log anywhere you like. In `/etc/rsyslog.d/filename.conf` file, 
+    replace `/var/log/syslog` with location of your logfile. Give syslog permission to write to the file.
+    ```
+        $ sudo chown syslog /path/to/mylogfile.log
+    ```
+
+    And restart rsyslog again. And you will have logs saved in mylogfile.log.     
+
+
+Personally, I prefer systemd over screen in case of setting up servers because services are more immune to unexpected circumstances and can be relied 
+upon and we can make maximum use of central logging servers. 
