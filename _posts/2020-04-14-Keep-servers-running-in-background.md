@@ -65,7 +65,7 @@ have them doing good work for us in background. I'm going to write about two met
 
     Systemd is the best choice since we are setting up a server and server needs to be stable and withstand
     system reboots, server failure and lots more. We can't afford server to be down because of simple issues and it is not ideal
-    to restart server time and again after each system reboot. So it is always a good idea to have knowledge about systemctl services
+    to restart server time and again manually after each system reboot. So its better to have knowledge about systemctl services
     in your arsenal. 
 
     I'm going to take a node.js server as a example here. If we were to start this server manually, we would do something like
@@ -79,7 +79,7 @@ have them doing good work for us in background. I'm going to write about two met
     ```
 
     Now, to start this server as a service, first we need to create a service file. Service files are generally located at ```/etc/systemd/system/```.
-    Let us create a service file called myserver.service using the following command.
+    Let's create a service file called myserver.service using the following command.
     ```bash
     $ touch /etc/systemd/system/myserver.service
     ```
@@ -154,7 +154,7 @@ have them doing good work for us in background. I'm going to write about two met
 
     To view the logs,
     ```
-        $ sudo journalctl -u <your program identifier>
+        $ sudo journalctl -u myserveridentifier
     ```
 
     You can save logs in a external file too. Create a file mylogfile.log anywhere you like. In `/etc/rsyslog.d/filename.conf` file, 
@@ -166,5 +166,4 @@ have them doing good work for us in background. I'm going to write about two met
     And restart rsyslog again. And you will have logs saved in mylogfile.log.     
 
 
-Personally, I prefer systemd over screen in case of setting up servers because services are more immune to unexpected circumstances and can be relied 
-upon and we can make maximum use of central logging servers. 
+Personally, I prefer systemd over screen in case of setting up servers because services are more immune to unexpected failures and can save us from headaches. Furthermore we can make maximum use of central logging server. 
