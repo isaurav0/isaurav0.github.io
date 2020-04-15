@@ -9,8 +9,7 @@ bigimg: /img/laptop.jpg
 ---
 
 
-A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can't do 
-other stuffs if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You can 
+A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can’t make use of shell if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You can 
 start a new tab anytime you want and do your stuffs. But during the stage of deployment, it can be a mess. 
 We generally SSH to a VM from command line. We start the server. It starts. We want to keep it running. So we cannot Ctrl+C.
 All we are left to do by then is to stare at the black screen while we question about every life choices we made and try hard not to break down. 
@@ -137,29 +136,29 @@ have them doing good work for us in background. I'm going to write about two met
     with `rsyslog` which manages syslogs in ubuntu systems by default. 
 
     Create a new file in /etc/rsyslog.d 
-    ```
+    ```bash
         $ sudo touch /etc/rsyslog.d/filename.conf
     ```
 
     Now we tell the file to save logs of our server using `SyslogIdentifier`. In our case it is `myserveridentifier`. So write the following code inside `/etc/rsyslog.d/filename.conf`.
-    ```
+    ```bash
         if $programname == 'myserveridentifier' then /var/log/syslog
         & stop
     ```
 
     After writing appropriate configurations successfully, restart rsyslog service.
-    ```
+    ```bash
         $ sudo systemctl restart rsyslog
     ```
 
     To view the logs,
-    ```
+    ```bash
         $ sudo journalctl -u myserveridentifier
     ```
 
     You can save logs in a external file too. Create a file mylogfile.log anywhere you like. In `/etc/rsyslog.d/filename.conf` file, 
     replace `/var/log/syslog` with location of your logfile. Give syslog permission to write to the file.
-    ```
+    ```bash
         $ sudo chown syslog /path/to/mylogfile.log
     ```
 
