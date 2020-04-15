@@ -7,25 +7,25 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>Mouth harmonica is breath taking, literally</title>
-        <description>
-          
-          I have been singing since I can remember. Though I am a mediocre singer with no special abilities, my love for music has only grown with time. I taught myself to play harmonium when I was 12 years old. It was an instant love with the instrument. Over these most...
-        </description>
-        <pubDate>Mon, 13 Apr 2020 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/2020-04-13-harmonica-leaves-me-curious/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-04-13-harmonica-leaves-me-curious/</guid>
-      </item>
-    
-      <item>
         <title>Running servers as daemons</title>
         <description>
           
-          A wise man once said, “To access your server anytime, you gotta keep it running all the time.”. You can’t do other stuffs if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You...
+          A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can’t do other stuffs if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You...
         </description>
-        <pubDate>Sat, 11 Apr 2020 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/2020-04-11-Keep-servers-running-in-background/</link>
-        <guid isPermaLink="true">http://localhost:4000/2020-04-11-Keep-servers-running-in-background/</guid>
+        <pubDate>Tue, 14 Apr 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2020-04-14-Keep-servers-running-in-background/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-04-14-Keep-servers-running-in-background/</guid>
+      </item>
+    
+      <item>
+        <title>Mouth harmonica is breath taking, literally</title>
+        <description>
+          
+          I have been singing since I can remember. Though I am a mediocre singer, my love for music has only grown with time. I taught myself to play harmonium when I was 12 years old. It was an instant love with the instrument. Over these most recent years, I learnt...
+        </description>
+        <pubDate>Mon, 13 Apr 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2020-04-13-mouth-harmonica-is-breath-taking.md/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-04-13-mouth-harmonica-is-breath-taking.md/</guid>
       </item>
     
       <item>

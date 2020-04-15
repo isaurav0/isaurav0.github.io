@@ -23,7 +23,7 @@ file /etc/resolv.conf. You can do this by typing following command.
 
 
 ```bash
-	cat /etc/resolv.conf
+	$ cat /etc/resolv.conf
 ```
 
 You might find something like 
