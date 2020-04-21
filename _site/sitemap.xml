@@ -44,4 +44,12 @@
 <loc>http://localhost:4000/projects/tictac.html</loc>
 <lastmod>2020-02-27T04:39:13-08:00</lastmod>
 </url>
+<url>
+<loc>http://localhost:4000/projects/tictac/landing.html</loc>
+<lastmod>2020-04-21T11:35:38-07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/projects/tictac/tictac.html</loc>
+<lastmod>2020-04-21T11:22:53-07:00</lastmod>
+</url>
 </urlset>

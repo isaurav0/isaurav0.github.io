@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TicTacToe</title>
+	<style type="text/css">
+
+		@font-face {
+            font-family: 'tictac';
+            src: url('./fonts/joker.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+             url('./fonts/joker.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+        }
+
+        @font-face {
+            font-family: 'spring';
+            src: url('./fonts/spring.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+             url('./fonts/spring.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+        }
+
+		body{
+			background-color: black;
+			color: white;
+			font-family: Courier;
+		}
+
+		.title{
+			font-size: 100px;
+			margin-top: 50px;
+			text-align: center;		
+		}
+
+		.menu{
+			font-size: 50px;
+			margin: 50px;
+			font-weight: bolder;
+			text-align: center;
+			font-family: spring;
+		}
+
+		.menu div{
+			margin: 70px;
+		}
+
+		.ghost {
+			display: none;			
+		}
+
+		.menu .choice:hover .ghost{
+			display: inline-block;
+		}
+
+		.menu .choice:hover{
+			cursor: pointer;
+	        display: inline-block;
+	        color: rgb(100,255,100);
+		}		
+		
+	</style>
+</head>
+<body>
+
+	<div class="title">
+		<span style="color: #00B4EB;">Tic</span> 
+		<span style="color: rgb(255, 255, 255);">Tac</span>
+		<span style="color: rgb(10, 200, 10);">Toe</span>
+	</div>
+
+	<div class="menu">
+		<div style="color: rgb(100,150,100);"> <span class="choice" id="single"><span class="ghost"> -></span> Unbeatable AI <span class="ghost">  <-</span> </span> </div>
+		<div style="color: rgb(100,150,100);"> <span class="choice" id="multi"><span class="ghost"> -></span> Play With Friend <span class="ghost">  <-</span> </span> </span> </div>
+	</div>
+
+	<script type="text/javascript">
+		
+		var choices = document.getElementsByClassName("choice");
+		console.log(choices.length)
+
+		Array.from(choices).forEach(elem=>{
+			elem.addEventListener("click", startGame)
+		})
+
+		function startGame(e){
+			window.localStorage.setItem("multi", e.target.id!=="single")
+			window.location = "tictac.html"
+		}
+
+
+	</script>
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                margin: 0px;
+                background-color: black;
+                border: 0px;
+            }
+            canvas{
+                background-color:black;
+                margin: 0px;
+                border: 0px;
+            }
+            #backbutton{
+                color: rgb(100,150,100);
+                font-size:  50px;
+                font-family: Courier;
+                position: absolute;
+                top: 20px;
+                margin: 20px;
+                text-decoration: none;
+            }
+
+            #backbutton:hover{
+                color: rgb(100,255,100);
+                text-shadow: 1px 1px rgb(100,100,100);
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <input type="text" name='roomname' id='roomname' placeholder="Enter roomname"><br> -->
+        <!-- <button id='create' class='initiate' onclick="respond(this.id)"> Create A game </button> <br> -->
+        <!-- <button id='create' class='initiate' onclick="respond(this.id)"> Create A game </button> <br> -->
+        <!-- <button id='join' class='initiate' onclick="respond(this.id)">Join In a Game</button> -->
+        <a href="landing.html" id="backbutton"> <-Back- </a>
+        <audio src="draw.wav" id="draw"></audio>
+        <canvas id="tictac"></canvas>
+        <script src="tictac.js"></script>
+        <!-- <script src="test.js"></script> -->
+    </body>
+</html>

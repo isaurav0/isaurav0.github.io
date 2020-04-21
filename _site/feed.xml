@@ -10,7 +10,7 @@
         <title>Running servers as daemons</title>
         <description>
           
-          A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can’t do other stuffs if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You...
+          A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can’t make use of shell if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI....
         </description>
         <pubDate>Tue, 14 Apr 2020 00:00:00 -0700</pubDate>
         <link>http://localhost:4000/2020-04-14-Keep-servers-running-in-background/</link>
