@@ -268,7 +268,7 @@ function moveAI(){
         unCheck(move)   //uncheck this and check other to see the best move
         console.log(move.name, score)
 
-        if( score > bestScore && score <=10  ){     //because winning score is 10 at 0 depth
+        if( score > bestScore   ){     //because winning score is 10 at 0 depth
             bestScore = score
             bestMove = move
         }
