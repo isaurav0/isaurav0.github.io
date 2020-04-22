@@ -254,6 +254,7 @@ function moveAI(){
     let bestScore = -Infinity;
     var bestMove;
     let unchecked=[];
+    let confirmWin = false;
 
     //find unchecked boxes
     for(i=1;i<10;i++){
@@ -268,9 +269,13 @@ function moveAI(){
         unCheck(move)   //uncheck this and check other to see the best move
         console.log(move.name, score)
 
-        if( score > bestScore   ){     //because winning score is 10 at 0 depth
+        if( score > bestScore && !confirmWin  ){     //because winning score is 10 at 0 depth
             bestScore = score
             bestMove = move
+        }
+
+        if(score==10){
+            confirmWin = true
         }
     })
     console.log("--------------------------")
