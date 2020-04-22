@@ -183,7 +183,6 @@ function userplay(e, player){
     }
 
     else{
-        console.log('invalid move')
         ctx.fillStyle = '#00B4EB';
         ctx.font = "50px Courier"
         ctx.fillText("Invalid Move", 390,647);
@@ -267,10 +266,8 @@ function moveAI(){
             confirmWin = true
         }
     })
-    console.log("--------------------------")
+
     check(bestMove,team) 
-    console.log("Chosen Move", bestMove)
-    console.log("--------------------------")
     team = true;
     okayToMove = true;
 }
