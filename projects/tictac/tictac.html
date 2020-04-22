@@ -38,7 +38,15 @@
         <a href="landing.html" id="backbutton"> <-Back- </a>
         <audio src="draw.wav" id="draw"></audio>
         <canvas id="tictac"></canvas>
+        <audio src="select.wav" id="select"></audio>
         <script src="tictac.js"></script>
-        <!-- <script src="test.js"></script> -->
+        <script>
+            var backbutton = document.getElementById("backbutton")
+            backbutton.addEventListener("mouseover", playAudio)
+
+            function playAudio(e){
+                document.getElementById("select").play()
+            }
+        </script>
     </body>
 </html>

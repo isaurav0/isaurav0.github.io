@@ -85,6 +85,8 @@
 		<div style="color: rgb(100,150,100);"> <span class="choice" id="multi"><span class="ghost"> -></span> Play With Friend <span class="ghost">  <-</span> </span> </span> </div>
 	</div>
 
+	<audio src="select.wav" id="select"></audio>
+
 	<script type="text/javascript">
 		
 		var choices = document.getElementsByClassName("choice");
@@ -92,12 +94,19 @@
 
 		Array.from(choices).forEach(elem=>{
 			elem.addEventListener("click", startGame)
+			elem.addEventListener("mouseover", playAudio)
 		})
 
 		function startGame(e){
 			window.localStorage.setItem("multi", e.target.id!=="single")
 			window.location = "tictac.html"
 		}
+
+		function playAudio(e){
+			document.getElementById("select").play()
+		}
+
+
 
 
 	</script>

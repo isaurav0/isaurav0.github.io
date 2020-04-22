@@ -136,17 +136,7 @@ var box9={
     name: 'box9'
 }
 
-box = []
-box[1] = box1
-box[2] = box2
-box[3] = box3
-box[4] = box4
-box[5] = box5
-box[6] = box6
-box[7] = box7
-box[8] = box8
-box[9] = box9
-
+box = [null, box1, box2, box3, box4, box5, box6, box7, box8, box9]
 
 
 //gameplay
@@ -225,7 +215,6 @@ function minimax(box, depth, isMax){
 
     if(result!==null){
         return isMax ? scores[result]-depth : scores[result]+depth //greater the depth, lower the score for maximizing player
-        // return isMax ? scores[result] : scores[result] //greater the depth, lower the score for maximizing player
     }
     
     let unchecked = []  
