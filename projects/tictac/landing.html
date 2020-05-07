@@ -85,9 +85,12 @@
 		<div style="color: rgb(100,150,100);"> <span class="choice" id="multi"><span class="ghost"> -></span> Play With Friend <span class="ghost">  <-</span> </span> </span> </div>
 	</div>
 
-	<audio src="select.wav" id="select"></audio>
+	<audio src="select.wav" id="select" ></audio>
+	<div id="click"></div>
 
 	<script type="text/javascript">
+
+		document.getElementById("click").click()
 		
 		var choices = document.getElementsByClassName("choice");
 
@@ -102,7 +105,9 @@
 		}
 
 		function playAudio(e){
-			document.getElementById("select").play()
+			audio = document.getElementById("select")
+			audio.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture");
+			audio.play()
 		}
 
 	</script>
