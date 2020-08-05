@@ -103,10 +103,10 @@ url-pretty: "pathaksaurav.com.np"  # eg. "deanattali.com/beautiful-jekyll"
 # --- Web Statistics Section --- #
 
 # Fill in your Google Analytics gtag.js ID to track your website using gtag
-#gtag: ""
+gtag: "UA-174595747-1"
 
 # Fill in your Google Analytics ID to track your website using GA
-#google_analytics: ""
+google_analytics: "UA-174595747-1"
 
 # Google Tag Manager ID
 #gtm: ""
