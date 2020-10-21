@@ -1,0 +1,6 @@
+I"i<p>DNS stands for Domain Name System, which is basically a method of assigning cute nicknames to ugly IP addresses.
+Every devices on network has their IP addresses. I dont want to talk about IP addresses in detail in this blog, however 
+IP addresses distinguish devices on the network. Suppose we want to browse facebook, what we are normally doing is
+making some https requests to facebook’s server. And to make request to facebook’s server, we need to know the server’s IP address. 
+It is a pain in somewhere to remember a numerical jargon like 192.168.10.33. This is where the great DNS comes to rescue.</p>
+:ET

@@ -7,6 +7,17 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>HOW TO BE THE FASTEST TYPIST EVER IN 2 HOURS</title>
+        <description>
+          
+          I have a godly typing speed of 193 words per minute with 100% accuracy. You don’t believe me? Okay, check out my certificate here provided by an infamous typing site. Even though you have seen the certificate, you would have to be madly gullible to believe that I actually type...
+        </description>
+        <pubDate>Tue, 20 Oct 2020 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/2020-10-20-how-to-be-the-fastest-typist-ever-in-2-hours/</link>
+        <guid isPermaLink="true">http://localhost:4000/2020-10-20-how-to-be-the-fastest-typist-ever-in-2-hours/</guid>
+      </item>
+    
+      <item>
         <title>Running servers as daemons</title>
         <description>
           

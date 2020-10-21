@@ -1,0 +1,49 @@
+I"�<p>The commands I list here might not be quite useful but they are fun :p Check these out when you’re bored. Some commands here wont be installed already but are available on repositories. In that instance, install them with your package manager.</p>
+
+<ol>
+  <li>
+    <p>Weather<br />
+ Did you know you can check weather forecast of any city from terminal? With this command you can. Your terminal will suggest if you should take umbrella to work today or not ;)</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> curl http://wttr.in/pokhara 
+</code></pre></div>    </div>
+    <p><img src="/img/weather.png" alt="" /></p>
+  </li>
+  <li>
+    <p>htop<br />
+ htop is an interactive process viewer(similar to windows’ task manager).  Needless to say, it looks hot and in the mean time you can inspect processes ongoing.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> htop
+</code></pre></div>    </div>
+
+    <p><img src="/img/htop.png" alt="" /></p>
+  </li>
+  <li>
+    <p>banner<br />
+ With this command, you can get nicely formatted text of asterisks.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> banner text
+</code></pre></div>    </div>
+
+    <p><img src="/img/banner.png" alt="" /></p>
+  </li>
+  <li>
+    <p>lolcat<br />
+ lolcat provides rainbow coloring effect for text console display. Remember, it doesnt come pre-installed in your system. So install it from package manager your distro supports.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">echo</span> <span class="s1">'text'</span> | lolcat
+</code></pre></div>    </div>
+
+    <p><img src="/img/lolcat.png" alt="" /></p>
+  </li>
+  <li>
+    <p>sl<br />
+ sl generates a moving ASCII train. According to its man page, it is developed to cure habit of mistyping. When someone mistypes sl for ls, they suffer. You can combine sl with lolcat to generate rainbow colored train. :D</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> sl 
+</code></pre></div>    </div>
+    <p><img src="/img/sl.png" alt="" /></p>
+  </li>
+</ol>
+
+:ET

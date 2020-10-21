@@ -1,0 +1,112 @@
+I"�8<p>I have a godly typing speed of 193 words per minute with 100% accuracy. You don’t believe me?
+Okay, check out my certificate <a href="https://www.ratatype.com/u2623367/certificate/">here</a> provided by an infamous typing site.</p>
+
+<p><img src="/img/typecert.jpg" alt="" /></p>
+
+<p>Even though you have seen the certificate, you would have to be madly gullible to believe that I actually type that fast.
+No, I didn’t photoshop it. Neither am I that good at typing. I decided to use my programming skills to
+achieve the goal. It was a fairly easy task and I got everything done in 2 hours.</p>
+
+<p>I used <code class="highlighter-rouge">puppeteer</code> which is a <code class="highlighter-rouge">Node.js</code> library to control
+Chromium browser. It can be used to automate stuffs like clicking buttons, visiting pages, sending keypresses. I could have
+used <code class="highlighter-rouge">selenium</code> with <code class="highlighter-rouge">python</code> too for the same thing, but I preferred puppeteer with <code class="highlighter-rouge">javascript</code> because it is convenient to 
+use node.js and client side vanilla javascript with <code class="highlighter-rouge">window</code> and <code class="highlighter-rouge">document</code> object exposed in the same script. Do I even make
+sense here? I might, later. Lets see some code.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">puppeteer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">puppeteer</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">type_url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://www.ratatype.com/typing-test/test/</span><span class="dl">"</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">browser</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">puppeteer</span><span class="p">.</span><span class="nx">launch</span><span class="p">({</span><span class="na">headless</span><span class="p">:</span> <span class="kc">false</span><span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">page</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">browser</span><span class="p">.</span><span class="nx">newPage</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">setViewport</span><span class="p">({</span> <span class="na">width</span><span class="p">:</span> <span class="mi">1366</span><span class="p">,</span> <span class="na">height</span><span class="p">:</span> <span class="mi">768</span><span class="p">});</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">bringToFront</span><span class="p">();</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">goto</span><span class="p">(</span><span class="nx">type_url</span><span class="p">,</span> <span class="p">{</span> <span class="na">waitUntil</span><span class="p">:</span> <span class="dl">'</span><span class="s1">networkidle0</span><span class="dl">'</span> <span class="p">});</span>
+    <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="dl">'</span><span class="s1">button#startButton</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></div>
+
+<p>With just 10 lines of code after installing puppeteer with <code class="highlighter-rouge">npm</code>, I got a full fledged chromium browser which opens url
+to the typing test and clicks start button to start the test. Awesome. Also, I came up with an interesting finding. I was always confused whether
+to use <strong>semicolons</strong> or not in javascript at first. Then, I came to a conclusion that it doesn’t matter anyways as I realized
+javascript uses <strong>ASI</strong> (Automatic Semicolon Insertion) during runtime. So, even if we leave semicolons, it will insert them
+based on some rules anyways. But on running the above code without semicolon in first line, to my surprise, I got an error.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Users/mac/projects/typebeater/ratatype.js:17
+<span class="o">(</span>async <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+^
+
+TypeError: require<span class="o">(</span>...<span class="o">)</span> is not a <span class="k">function
+    </span>at Object.&lt;anonymous&gt; <span class="o">(</span>/Users/mac/projects/typebeater/ratatype.js:17:1<span class="o">)</span>
+    at Module._compile <span class="o">(</span>internal/modules/cjs/loader.js:1176:30<span class="o">)</span>
+    at Object.Module._extensions..js <span class="o">(</span>internal/modules/cjs/loader.js:1196:10<span class="o">)</span>
+    at Module.load <span class="o">(</span>internal/modules/cjs/loader.js:1040:32<span class="o">)</span>
+    at Function.Module._load <span class="o">(</span>internal/modules/cjs/loader.js:929:14<span class="o">)</span>
+    at Function.executeUserEntryPoint <span class="o">[</span>as runMain] <span class="o">(</span>internal/modules/run_main.js:71:12<span class="o">)</span>
+    at internal/main/run_main_module.js:17:47
+</code></pre></div></div>
+
+<p>What happened was an ambiguity arises when using self-invoking anonymous function. For example</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span>
+<span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+<p>We expect above script to print ‘world’, but we get an error instead because above statement is treated as:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">world</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})()</span>
+</code></pre></div></div>
+<p>Here, hello is treated as a function and called. And thus, <code class="highlighter-rouge">is not a function</code> error. So, It is safer to use semicolons in javascript.</p>
+
+<p>Anyways, I got the page opened in puppeteer controlled Chromium browser, I inspected the elements of the site and noticed that
+all texts to be typed were available inside a <code class="highlighter-rouge">&lt;div&gt;</code> with class <code class="highlighter-rouge">"mainTxt"</code>. I extracted all texts easily with client side
+vanilla javascript that can be used with <code class="highlighter-rouge">page.evaluate()</code> function provided by <code class="highlighter-rouge">puppeteer</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">allTexts</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">page</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(()</span><span class="o">=&gt;</span><span class="p">{</span>
+		<span class="nx">text</span> <span class="o">=</span> <span class="dl">''</span>
+		<span class="k">for</span><span class="p">(</span><span class="nx">e</span> <span class="k">of</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">'</span><span class="s1">mainTxt</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">childNodes</span><span class="p">){</span>
+			<span class="nx">text</span> <span class="o">+=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">innerText</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nx">text</span>
+	<span class="p">});</span>
+</code></pre></div></div>
+<p>I had all texts to be typed in the test in memory. Now, I had to send keypress events to simulate typing. I tried to fire keypress
+event in javascript with <code class="highlighter-rouge">dispatchEvent</code> method, but for some reasons, it didn’t work. I don’t know why. I tried to attach
+eventListener to the element, I bubbled the event to ripple all over the DOM, but none of them worked. So, I decided to send
+keypress directly from the operating system. I thought I could write a simple script from scratch in node to send keypress,
+but I gave up before trying. I tried to use <code class="highlighter-rouge">robotjs</code>, <code class="highlighter-rouge">node-key-sender</code> libraries, but they didn’t meet my expectations.</p>
+
+<p>In the end, I decided to turn to my friend <code class="highlighter-rouge">python</code> and the renowned library for automating GUI stuffs, the very best, <code class="highlighter-rouge">pyautogui</code>
+. I had to send the variable <code class="highlighter-rouge">allTexts</code> from above node code, to the python script. I decided to send them as command line args.
+For example: <code class="highlighter-rouge">python keypress.py 'all texts to be typed'</code>. To do this, I used node’s built-in library called <code class="highlighter-rouge">child-process</code>.
+Lets see some code.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">spawn</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">child_process</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">pythonPath</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">/usr/local/bin/python3</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">args</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">keypress.py</span><span class="dl">'</span><span class="p">,</span> <span class="nx">allTexts</span><span class="p">]</span>
+<span class="kd">const</span> <span class="nx">pythonProcess</span> <span class="o">=</span> <span class="nx">spawn</span><span class="p">(</span><span class="nx">pythonPath</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+
+<span class="nx">pythonProcess</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+<span class="p">});</span>
+
+<span class="nx">pythonProcess</span><span class="p">.</span><span class="nx">stderr</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">spawn</code> calls the python script called ‘keypress.py’ with allTexts sent as argument. <code class="highlighter-rouge">stdout</code> and <code class="highlighter-rouge">stderr</code> listen for success
+and error messages flushed by the process respectively. <code class="highlighter-rouge">data</code> is recieved as <code class="highlighter-rouge">Buffer</code> object and has to be converted to <code class="highlighter-rouge">String</code> first
+to be readable.</p>
+
+<p>Now, in <code class="highlighter-rouge">keypress.py</code> file, we extract all characters to be typed and press respective keys sequentially using <code class="highlighter-rouge">pyautogui.press</code> method.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">texts</span> <span class="o">=</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
+    <span class="n">pyautogui</span><span class="p">.</span><span class="n">press</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">pause</span><span class="o">=</span><span class="mf">0.033</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Final result looked like this.</p>
+<video autoplay="" muted="" loop="" style="width: 100%;"> <source src="/img/fastest.mp4" type="video/mp4" /> </video>
+:ET

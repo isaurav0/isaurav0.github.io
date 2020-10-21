@@ -1,0 +1,14 @@
+I"<p>I have a godly typing speed of 193 words per minute with 100% accuracy. You don’t believe it?
+Okay, check out my certificate <a href="https://www.ratatype.com/u2623367/certificate/">here</a> provided by an infamous typing site.</p>
+
+<p><img src="/img/typecert.jpg" alt="" /></p>
+
+<p>Even though you have seen the certificate, you would have to be madly gullible to believe that I actually type that fast.
+No, I didn’t photoshop it. Neither am I that good at typing. I decided to use my programming skills to
+achieve the goal. It was a fairly easy task and I got everything done in 2 hours.</p>
+
+<p>I used <code class="highlighter-rouge">puppeteer</code> which is a <code class="highlighter-rouge">Node.js</code> library to control
+Chromium browser. It can be used to automate stuffs like clicking buttons, visiting pages, sending keypresses. I could have
+used <code class="highlighter-rouge">selenium</code> with python too for the same thing, but I preferred <code class="highlighter-rouge">puppeteer</code> with <code class="highlighter-rouge">javascript</code> because it is convenient to 
+use <code class="highlighter-rouge">node.js</code> and client side vanilla javascript with <code class="highlighter-rouge">window</code> and <code class="highlighter-rouge">document</code> object exposed.</p>
+:ET

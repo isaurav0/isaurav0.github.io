@@ -1,0 +1,141 @@
+I"�+<p>A wise man once said, “To access your server anytime, you gotta keep it running all the time.” You can’t make use of shell if you use the shell to run your server. It is of no issue during development because you are on your local computer. You have GUI. You can 
+start a new tab anytime you want and do your stuffs. But during the stage of deployment, it can be a mess. 
+We generally SSH to a VM from command line. We start the server. It starts. We want to keep it running. So we cannot Ctrl+C.
+All we are left to do by then is to stare at the black screen while we question about every life choices we made and try hard not to break down. 
+Furthermore, servers need to withstand system failures, reboots, server crash and what not for stability.</p>
+
+<p>In order to handle these situations like a boss, we make some tweakings. We summon our inner demons. Kidding, nothing spiritual 
+I’m going to write here. What I’m talking about is daemons. As wiki describes it, a daemon (/ˈdiːmən/ or /ˈdeɪmən/) is a 
+computer program that runs as a background process, rather than being under the direct control of an interactive user. 
+In a nutshell, daemons work behind the curtain. Thus, we don’t have to assign a dedicated shell for them to run. And we can exit from tty anytime and still 
+have them doing good work for us in background. I’m going to write about two methods I use to make servers run in background.</p>
+
+<ol>
+  <li>
+    <p><strong>Using screen command</strong></p>
+
+    <p>I find screen command super useful. So the basic idea of screen is to create new terminal sessions which can be detached and reattached to the main session. 
+ To install screen</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>screen
+</code></pre></div>    </div>
+    <p>For OSX,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>brew <span class="nb">install </span>screen
+</code></pre></div>    </div>
+    <p>You can read documentation of screen to become a screen ninja but the most basic and redundant use case
+ involves the following steps.</p>
+
+    <p>i. Create and start a new screen.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span>screen <span class="nt">-S</span> screenname
+</code></pre></div>    </div>
+    <p>In the new screen just created, you can run your server or any application you choose to.</p>
+
+    <p>ii. Use key combination <code class="highlighter-rouge">Ctrl+A d</code> to detach from currently active screen. And by now, your application
+     will be running in background.</p>
+
+    <p>iii. Reattach the screen again</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span>screen <span class="nt">-r</span> screenname
+</code></pre></div>    </div>
+
+    <p>iv. You can always make queries for active screens.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span>screen <span class="nt">-ls</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Using systemd</strong></p>
+
+    <p>Systemd is the best choice since we are setting up a server and server needs to be stable and withstand
+ system reboots, server failure and lots more. We can’t afford server to be down because of simple issues and it is not ideal
+ to restart server time and again manually after each system reboot. So its better to have knowledge about systemctl services
+ in your arsenal.</p>
+
+    <p>I’m going to take a node.js server as a example here. If we were to start this server manually, we would do something like</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>/path/to/node /path/to/server.js
+</code></pre></div>    </div>
+
+    <p>In case of a django server, it would be</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>/path/to/virtualenv/bin/python /path/to/manage.py runserver
+</code></pre></div>    </div>
+
+    <p>Now, to start this server as a service, first we need to create a service file. Service files are generally located at <code class="highlighter-rouge">/etc/systemd/system/</code>.
+ Let’s create a service file called myserver.service using the following command.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">touch</span> /etc/systemd/system/myserver.service
+</code></pre></div>    </div>
+
+    <p>Inside myserver.service, you write configuration about the execution to be performed, order of execution, 
+ behavior upon restart or failures and so on. A basic configuration file should be looks like this.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">[</span>Unit]
+ <span class="nv">Description</span><span class="o">=</span>Example Server As A service
+ <span class="nv">Requires</span><span class="o">=</span><span class="nv">After</span><span class="o">=</span>mysql.service                        <span class="c"># only if server needs to run after other services, eg: mysql</span>
+
+ <span class="o">[</span>Service]
+ <span class="nv">ExecStart</span><span class="o">=</span>/path/to/node /path/to/server.js          <span class="c">#this is the part where you start your server</span>
+ <span class="nv">Restart</span><span class="o">=</span>always
+ <span class="nv">RestartSec</span><span class="o">=</span>10                                       <span class="c">#this restarts server after 10 seconds in case of failure</span>
+ <span class="c"># Output to syslog</span>
+ <span class="nv">StandardOutput</span><span class="o">=</span>syslog                   <span class="c">#logs can be viewed with rsyslog and journalctl</span>
+ <span class="nv">StandardError</span><span class="o">=</span>syslog
+ <span class="nv">SyslogIdentifier</span><span class="o">=</span>myserveridentifier 
+
+ <span class="o">[</span>Install]
+ <span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>    </div>
+
+    <p><code class="highlighter-rouge">Description</code> can be any combination of alphanums, better if the combination makes sensible phrase. <code class="highlighter-rouge">ExecStart</code> is the main line you
+ want to modify as per your needs. <code class="highlighter-rouge">WantedBy</code> is a sort of preset of when to execute the service. multi-user.target normally defines a system state 
+ where all network services are started up and the system will accept logins, but a local GUI is not started. Most Likely, you won’t need to modify this. 
+ If you want to have more control over configuration file and looking for exploring more, I suggest to read from <a href="https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files">here.</a>.</p>
+
+    <p>If you want to stick to the basics, above configuration is enough to get server running with few more steps.</p>
+
+    <p>After making proper configurations to service file, you need to enable the service.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>systemctl <span class="nb">enable </span>myserver
+</code></pre></div>    </div>
+
+    <p>Then you can start server with the good old systemctl command that you might already have used multiple times.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>systemctl start myserver
+</code></pre></div>    </div>
+
+    <p>These are some more commands you’ll need at times too.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>systemctl disable myserver
+ <span class="nv">$ </span>systemctl restart myserver
+ <span class="nv">$ </span>systemctl stop myserver
+</code></pre></div>    </div>
+
+    <p><strong>Setting up logging server</strong></p>
+
+    <p>Logging is a vital mechanism to keep track of how your server is doing. A good log helps not only in analyzation of traffic but also in troubleshooting and
+ debugging. So setting up a central logserver is never a bad idea. I’m going to write about setting up logging server
+ with <code class="highlighter-rouge">rsyslog</code> which manages syslogs in ubuntu systems by default.</p>
+
+    <p>Create a new file in /etc/rsyslog.d</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span><span class="nb">sudo touch</span> /etc/rsyslog.d/filename.conf
+</code></pre></div>    </div>
+
+    <p>Now we tell the file to save logs of our server using <code class="highlighter-rouge">SyslogIdentifier</code>. In our case it is <code class="highlighter-rouge">myserveridentifier</code>. So write the following code inside <code class="highlighter-rouge">/etc/rsyslog.d/filename.conf</code>.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="k">if</span> <span class="nv">$programname</span> <span class="o">==</span> <span class="s1">'myserveridentifier'</span> <span class="k">then</span> /var/log/syslog
+     &amp; stop
+</code></pre></div>    </div>
+
+    <p>After writing appropriate configurations successfully, restart rsyslog service.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span><span class="nb">sudo </span>systemctl restart rsyslog
+</code></pre></div>    </div>
+
+    <p>To view the logs,</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span><span class="nb">sudo </span>journalctl <span class="nt">-u</span> myserveridentifier
+</code></pre></div>    </div>
+
+    <p>You can save logs in a external file too. Create a file mylogfile.log anywhere you like. In <code class="highlighter-rouge">/etc/rsyslog.d/filename.conf</code> file, 
+ replace <code class="highlighter-rouge">/var/log/syslog</code> with location of your logfile. Give syslog permission to write to the file.</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nv">$ </span><span class="nb">sudo chown </span>syslog /path/to/mylogfile.log
+</code></pre></div>    </div>
+
+    <p>And restart rsyslog again. And you will have logs saved in mylogfile.log.</p>
+  </li>
+</ol>
+
+<p>Personally, I prefer systemd over screen in case of setting up servers because services are more immune to unexpected failures and can save us from headaches. Furthermore we can make maximum use of central logging server.</p>
+:ET
