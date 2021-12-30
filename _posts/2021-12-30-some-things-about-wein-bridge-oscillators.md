@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 'Some things about Wein bridge oscillators'
-subtitle: 'How to pass exams without studying'
 date: 2021-12-30
 tags: [humour]
 bigimg: /img/classroom.jpg
